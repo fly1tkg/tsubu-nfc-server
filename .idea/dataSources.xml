@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2680636981">
+  <component name="DataSourceManagerImpl" format="xml" hash="3542224739">
     <data-source source="LOCAL" name="Rails TsubuNfc: development" uuid="e6421150-1ccb-4fb4-bfcc-c913062e0512">
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
@@ -11,6 +11,12 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails TsubuNfc: production" uuid="7c8d9d63-3468-440d-894a-071bb2b32a1e">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:tsubu-nfc_production</jdbc-url>
       <libraries />
     </data-source>
   </component>

@@ -6,4 +6,7 @@
   <data-source source="LOCAL" name="Rails TsubuNfc: test" uuid="e9cad35f-aa17-46dd-8816-15925b3b720f">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails TsubuNfc: production" uuid="7c8d9d63-3468-440d-894a-071bb2b32a1e">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
