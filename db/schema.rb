@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140609124018) do
     t.integer  "event_set_id"
     t.string   "title"
     t.integer  "price"
-    t.string   "zusaar_id"
+    t.integer  "zusaar_id"
     t.text     "register_users"
     t.datetime "created_at"
     t.datetime "updated_at"

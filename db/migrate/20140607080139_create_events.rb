@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.references :event_set
       t.string :title
       t.integer :price
-      t.string :zusaar_id
+      t.integer :zusaar_id
       t.text :register_users
 
       t.timestamps
