@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_set: 
+  title: MyString
+  price: 1
+  zusaar_id: MyString
+  register_users: MyText
+  attendance_users: MyText
+
+two:
+  event_set: 
+  title: MyString
+  price: 1
+  zusaar_id: MyString
+  register_users: MyText
+  attendance_users: MyText
