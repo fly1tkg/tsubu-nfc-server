@@ -17,7 +17,7 @@ class API < Grape::API
     end
     post do
       event_set = EventSet.create_or_update_by_zusaar(params[:id_study], params[:price_study], params[:id_drink], params[:price_drink])
-      event_set.as_json(methods: [:study_title, :drink_title, :register_users])
+      event_set.as_json(methods: [:study_title, :study_price, :drink_title, :drink_price, :register_users])
     end
 
 
