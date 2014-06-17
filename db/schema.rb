@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20140609124018) do
     t.integer  "price"
     t.integer  "zusaar_id"
     t.text     "register_users"
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

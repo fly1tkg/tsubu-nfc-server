@@ -7,6 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :price
       t.integer :zusaar_id
       t.text :register_users
+      t.datetime :started_at
+      t.datetime :ended_at
 
       t.timestamps
     end
