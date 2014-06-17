@@ -11,21 +11,23 @@ class Event < ActiveRecord::Base
 
     users_id = []
 
-    # ユーザを作成か更新
-    zusaar_event.users.each do |zusaar_user|
-      user = User.find_by(zusaar_id: zusaar_user.id) || User.new(zusaar_id: zusaar_user.id)
-      user.name = zusaar_user.nickname
-      user.save!
+    ActiveRecord::Base.transaction do
+      # ユーザを作成か更新
+      zusaar_event.users.each do |zusaar_user|
+        user = User.find_by(zusaar_id: zusaar_user.id) || User.new(zusaar_id: zusaar_user.id)
+        user.name = zusaar_user.nickname
+        user.save!
 
-      # 参加ユーザのidをpush
-      users_id << user.id
+        # 参加ユーザのidをpush
+        users_id << user.id
+      end
+
+      # eventを作成か更新
+      event = find_by(zusaar_id: zusaar_id) || new(zusaar_id: zusaar_id)
+      event.attributes = {
+          register_users: users_id, kind: kind, price: price, title: zusaar_event.title
+      }
+      event.save!
     end
-
-    # eventを作成か更新
-    event = find_by(zusaar_id: zusaar_id) || new(zusaar_id: zusaar_id)
-    event.attributes = {
-        register_users: users_id, kind: kind, price: price, title: zusaar_event.title
-    }
-    event.save!
   end
 end
