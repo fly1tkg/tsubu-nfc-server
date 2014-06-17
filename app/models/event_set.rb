@@ -9,28 +9,28 @@ class EventSet < ActiveRecord::Base
     event_set
   end
 
+  def study
+    events.find_by(kind: :study)
+  end
+
+  def drink
+    events.find_by(kind: :drink)
+  end
+
   def study_title
-    if event = events.find_by(kind: :study)
-      event.title
-    end
+    study.nil? || study.title
   end
 
   def study_price
-    if event = events.find_by(kind: :study)
-      event.price
-    end
+    study.nil? || study.price
   end
 
   def drink_title
-    if event = events.find_by(kind: :drink)
-      event.title
-    end
+    drink.nil? || drink.title
   end
 
   def drink_price
-    if event = events.find_by(kind: :drink)
-      event.price
-    end
+    drink.nil? || drink.price
   end
 
   def register_users
