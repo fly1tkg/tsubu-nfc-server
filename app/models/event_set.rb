@@ -2,8 +2,8 @@ class EventSet < ActiveRecord::Base
   has_many :events
   serialize :attendance_users, Array
 
-  def self.create_by_zusaar(id_study, price_study, id_drink, price_drink)
-    event_set = create
+  def self.create_or_update_by_zusaar(id_study, price_study, id_drink, price_drink)
+    event_set = joins(:events).find_by(events: {zusaar_id: id_study, kind: :study}) || create
     event_set.events.create_or_update_by_zusaar(id_study, :study, price_study)
     event_set.events.create_or_update_by_zusaar(id_drink, :drink, price_drink)
     event_set

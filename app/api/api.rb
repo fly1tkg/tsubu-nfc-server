@@ -16,7 +16,7 @@ class API < Grape::API
       requires :price_drink, type: Integer, desc: '懇親会の参加費'
     end
     post do
-      event_set = EventSet.create_by_zusaar(params[:id_study], params[:price_study], params[:id_drink], params[:price_drink])
+      event_set = EventSet.create_or_update_by_zusaar(params[:id_study], params[:price_study], params[:id_drink], params[:price_drink])
       event_set.as_json(methods: [:study_title, :drink_title, :register_users])
     end
 
