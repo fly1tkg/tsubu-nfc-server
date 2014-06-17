@@ -15,9 +15,21 @@ class EventSet < ActiveRecord::Base
     end
   end
 
+  def study_price
+    if event = events.find_by(kind: :study)
+      event.price
+    end
+  end
+
   def drink_title
     if event = events.find_by(kind: :drink)
       event.title
+    end
+  end
+
+  def drink_price
+    if event = events.find_by(kind: :drink)
+      event.price
     end
   end
 

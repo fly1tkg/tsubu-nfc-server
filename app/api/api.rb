@@ -24,7 +24,7 @@ class API < Grape::API
     resource ':event_set_id' do
       desc 'イベントセットの詳細情報を返します'
       get do
-        EventSet.find_by(id: params[:event_set_id]).as_json(methods: [:study_title, :drink_title, :register_users])
+        EventSet.find_by(id: params[:event_set_id]).as_json(methods: [:study_title, :study_price, :drink_title, :drink_price, :register_users])
       end
 
       params do
