@@ -74,6 +74,20 @@ class EventSet < ActiveRecord::Base
   def add_attendance_user(user_id)
     self.attendance_users |= [user_id]
     save
+
+    attendance_response = AttendanceResponse.new
+
+    if study.register_users.include?(user_id)
+      attendance_response.study_price = study_price
+    end
+
+    if drink.register_users.include?(user_id)
+      attendance_response.drink_price = drink_price
+    end
+
+    attendance_response.user = User.find_by(id: user_id)
+
+    attendance_response.attendance
   end
 
   def as_default_json

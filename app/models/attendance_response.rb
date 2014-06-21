@@ -1,11 +1,15 @@
 class AttendanceResponse
   include ActiveModel::Model
+  attr_accessor :study_price, :drink_price, :user
 
-  def self.attendance
+  def attendance
     {
-        status: :attendance
+        status: :attendance,
+        study_price: study_price,
+        drink_price: drink_price,
+        user: user
     }
-  end
+end
 
   def self.need_user_id
     {status: :need_user_id}

@@ -39,13 +39,11 @@ class API < Grape::API
         if nfc = Nfc.find_by(uuid: params[:uuid])
           # 参加にする
           event_set.add_attendance_user(nfc.user.id)
-          AttendanceResponse.attendance
         elsif user_id = params[:user_id]
           if user = User.find_by(id: user_id)
             # NFC登録
             nfc = user.nfcs.create(uuid: params[:uuid])
             event_set.add_attendance_user(nfc.user.id)
-            AttendanceResponse.attendance
           else
             error!(400, 'ユーザが見つかりません')
           end
