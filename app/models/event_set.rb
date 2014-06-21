@@ -75,4 +75,12 @@ class EventSet < ActiveRecord::Base
     self.attendance_users |= [user_id]
     save
   end
+
+  def as_default_json
+    as_json(methods: [
+        :study_title, :study_price, :study_start_at, :study_ended_at,
+        :drink_title, :drink_price, :drink_started_at, :drink_ended_at,
+        :register_users
+    ])
+  end
 end
