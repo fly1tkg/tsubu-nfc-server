@@ -61,14 +61,14 @@ class EventSet < ActiveRecord::Base
     end
 
     # 登録者を取得する
-    users = User.where(id: users_id)
+    users = User.includes(:nfcs).where(id: users_id)
 
     # 出席かどうか
     users.each do |user|
       user.status = attendance_users.include?(user.id) ? :attendance : :registered
     end
 
-    users.as_json(methods: :status)
+    users.as_json(include: :nfcs, methods: :status)
   end
 
   def add_attendance_user(user_id)
