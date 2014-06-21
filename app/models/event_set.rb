@@ -10,11 +10,11 @@ class EventSet < ActiveRecord::Base
   end
 
   def study
-    events.find_by(kind: :study)
+    @study ||= events.find_by(kind: :study)
   end
 
   def drink
-    events.find_by(kind: :drink)
+    @drink ||= events.find_by(kind: :drink)
   end
 
   def study_title
