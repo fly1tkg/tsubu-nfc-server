@@ -25,12 +25,28 @@ class EventSet < ActiveRecord::Base
     study.nil? || study.price
   end
 
+  def study_started_at
+    study.nil? || study.started_at
+  end
+
+  def study_ended_at
+    study.nil? || study.ended_at
+  end
+
   def drink_title
     drink.nil? || drink.title
   end
 
   def drink_price
     drink.nil? || drink.price
+  end
+
+  def drink_started_at
+    drink.nil? || drink.started_at
+  end
+
+  def drink_ended_at
+    drink.nil? || drink.ended_at
   end
 
   def register_users

@@ -17,14 +17,14 @@ class API < Grape::API
     end
     post do
       event_set = EventSet.create_or_update_by_zusaar(params[:id_study], params[:price_study], params[:id_drink], params[:price_drink])
-      event_set.as_json(methods: [:study_title, :study_price, :drink_title, :drink_price, :register_users])
+      event_set.as_json(methods: [:study_title, :study_price, :study_start_at, :study_ended_at, :drink_title, :drink_price, :drink_started_at, :drink_ended_at, :register_users])
     end
 
 
     resource ':event_set_id' do
       desc 'イベントセットの詳細情報を返します'
       get do
-        EventSet.find_by(id: params[:event_set_id]).as_json(methods: [:study_title, :study_price, :drink_title, :drink_price, :register_users])
+        EventSet.find_by(id: params[:event_set_id]).as_json(methods: [:study_title, :study_price, :study_started_at, :study_ended_at, :drink_title, :drink_price, :drink_started_at, :drink_ended_at, :register_users])
       end
 
       params do
