@@ -28,7 +28,7 @@ class API < Grape::API
       end
 
       params do
-        requires :uuid, type: String, desc: 'NFCのUUID'
+        optional :uuid, type: String, desc: 'NFCのUUID'
         optional :user_id, type: Integer, desc: 'ユーザID'
       end
       post 'attendance' do
@@ -42,8 +42,12 @@ class API < Grape::API
         elsif user_id = params[:user_id]
           if user = User.find_by(id: user_id)
             # NFC登録
-            nfc = user.nfcs.create(uuid: params[:uuid])
-            event_set.add_attendance_user(nfc.user.id)
+            if params[:uuid]
+              nfc = user.nfcs.create(uuid: params[:uuid]) if params[:uuid]
+              event_set.add_attendance_user(nfc.user.id)
+            elsif params[:user_id]
+              event_set.add_attendance_user(params[:user_id])
+            end
           else
             error!(400, 'ユーザが見つかりません')
           end
