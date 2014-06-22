@@ -92,7 +92,7 @@ class EventSet < ActiveRecord::Base
 
   def as_default_json
     as_json(methods: [
-        :study_title, :study_price, :study_start_at, :study_ended_at,
+        :study_title, :study_price, :study_started_at, :study_ended_at,
         :drink_title, :drink_price, :drink_started_at, :drink_ended_at,
         :register_users
     ])
