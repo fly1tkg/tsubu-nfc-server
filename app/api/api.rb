@@ -68,6 +68,16 @@ class API < Grape::API
         end
 
       end
+
+      params do
+        requires :user_id, type: Integer, desc: 'ユーザID'
+      end
+      post 'absence' do
+        if !event_set = EventSet.find_by(id: params[:event_set_id])
+          error!(400, 'イベントセットが見つかりません')
+        end
+        event_set.remove_attendance_user(params[:user_id])
+      end
     end
   end
 

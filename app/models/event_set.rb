@@ -90,6 +90,11 @@ class EventSet < ActiveRecord::Base
     attendance_response.attendance
   end
 
+  def remove_attendance_user(user_id)
+    self.attendance_users.delete(user_id)
+    save
+  end
+
   def as_default_json
     as_json(methods: [
         :study_title, :study_price, :study_started_at, :study_ended_at,
