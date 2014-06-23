@@ -20,11 +20,23 @@ class API < Grape::API
       event_set.as_default_json
     end
 
-
     resource ':event_set_id' do
       desc 'イベントセットの詳細情報を返します'
       get do
         EventSet.find_by(id: params[:event_set_id]).as_default_json
+      end
+
+      get 'barusu' do
+        if event_set = EventSet.find_by(id: params[:event_set_id])
+          {
+              musuka: '目が、目がぁ～!',
+              deleted: {
+                  study: !!event_set.study.delete,
+                  drink: !!event_set.drink.delete,
+                  event_set: !!event_set.delete
+              }
+          }
+        end
       end
 
       params do
@@ -56,6 +68,16 @@ class API < Grape::API
         end
 
       end
+    end
+  end
+
+  resource :barusu do
+    get do
+      EventSet.delete_all
+      Event.delete_all
+      Nfc.delete_all
+      User.delete_all
+      { musuka: '目が、目がぁ～!' }
     end
   end
 end
