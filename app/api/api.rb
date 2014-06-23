@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 class API < Grape::API
   format :json
+  content_type :json, 'application/json; charset=utf8'
 
   resource :event_sets do
     desc 'イベントセットの一覧を返します'
